@@ -141,11 +141,10 @@
       "Dünən keçdi, bu gün hər şey səndədir."
     ];
 
-    const startDate = new Date("2024-01-01");
-    const now = new Date();
-    const diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
-    const index = diffDays % quotes.length;
-    document.getElementById("quote").textContent = quotes[index];
+    const index = Math.floor(Math.random() * quotes.length);
+const quote = quotes[index];
+
+
   </script>
 </body>
 </html>
