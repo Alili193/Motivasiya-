@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Günün motivasiya sözü</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #222;
+    }
+    h1 {
+      font-size: 2.2em;
+    }
+    .quote {
+      font-size: 1.4em;
+      margin-top: 25px;
+      background: #ffffffcc;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #00000022;
+      max-width: 700px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Günün motivasiya sözü</h1>
+  <div class="quote" id="quote"></div>
+
+  <script>
+    const quotes = [
+      "Öz yolunu tap, ya da başqasının xəyalını gerçəkləşdir.",
+      "Kiçik addımlar böyük yollar açır.",
+      "İmkansız yalnız cəhd etməyə qorxanlar üçündür.",
+      "Qorxularını deyil, xəyallarını bəslə.",
+      "Bugünkü zəhmət sabahın mükafatıdır.",
+      "Böyük düşün, cəsarətlə hərəkət et.",
+      "Uğursuzluq da uğura aparan yoldur.",
+      "İrəliləmək üçün hərəkət et.",
+      "Güc içindədir, kənarda deyil.",
+      "Səbr edən qazanır.",
+      "Ən böyük dəyişiklik səndən başlayır.",
+      "Hər səhv bir dərsdir.",
+      "Sən bacararsan, sadəcə inan.",
+      "Uğur üçün mübarizə şərtdir.",
+      "Həyat bir oyundur, oyunda qal.",
+      "Gələcəyini özün qur.",
+      "Məqsədin varsa, yol da var.",
+      "İlham içində gizlidir.",
+      "Hər gün yeni başlanğıcdır.",
+      "Qorxularını aş, azad ol.",
+      "Hərəkət olmayan yerdə uğur yoxdur.",
+      "Düşün, inşa et, uğur qazan.",
+      "Gec də olsa, başlan!",
+      "Öz dəyərini bilmək ilk uğurdur.",
+      "Arzular məqsədə çevrilsin.",
+      "Müvəffəqiyyət səbrin bəhrəsidir.",
+      "Əzmkarlıq hər şeyi dəyişir.",
+      "Yalnız cəsurlar fərq yaradır.",
+      "Məğlubiyyət dərsdir, son deyil.",
+      "Zəiflik qorxudan doğar.",
+      "Hər səhər bir fürsətdir.",
+      "Fikirlərini pozitiv saxla.",
+      "Uğur üçün özünü tanı.",
+      "Heç kim sənin qədər sən ola bilməz.",
+      "Xəyal qur, sonra çalış.",
+      "Yaradıcılıq cəsarətdən doğar.",
+      "Uğur üçün ilk addım inamdır.",
+      "Məqsədsiz yol olmaz.",
+      "Ən yaxşı zaman indi!",
+      "Hər çətinlik bir fürsətdir.",
+      "İradə uğurun təməlidir.",
+      "Davamlılıq müvəffəqiyyət gətirir.",
+      "Öyrənmək heç vaxt gec deyil.",
+      "Öz yolunu özün çək.",
+      "Sözlərindən çox, hərəkətlərin danışsın.",
+      "Başlamadan qələbə olmur.",
+      "Risk et, böyü.",
+      "Səmimiyyət uğura aparır.",
+      "Sakitlikdə güc var.",
+      "Uğur asan deyil, amma mümkündür.",
+      "Məğlubiyyətləri dərs kimi gör.",
+      "Ən çətin anlar da keçəcək.",
+      "Nə qədər çalışsan, o qədər irəliləyəcəksən.",
+      "Bir addım at, fərqi gör.",
+      "Ən böyük risk heç nə etməməkdir.",
+      "Ürəyinlə qərar ver.",
+      "Gözləmə, hərəkət et.",
+      "İradə uğurun sirridir.",
+      "Qorxu səni deyil, sən qorxunu idarə et.",
+      "İnkişaf rahatlıq zonasında olmur.",
+      "Zəhmət çək, nəticə gözləmə.",
+      "Fikrin gücü sənin gücündür.",
+      "Heç nə etməmək ən böyük səhvdir.",
+      "Fikrin dəyişərsə, həyatın dəyişər.",
+      "Düşüncə tərzin taleyindir.",
+      "Uğur yolunda tək qalmaq normaldır.",
+      "Sən fərqlisən, və bu gözəldir.",
+      "Hər gün bir damla – okean yaradar.",
+      "Səbir uğurun qapısını açar.",
+      "Düşməyə qorxma, qalxmaq əsasdır.",
+      "Özünü sev, gücünü artır.",
+      "İnamsızlıq uğurun düşmənidir.",
+      "Güclü olmaq seçimdir.",
+      "Sınaqlar səni formalaşdırır.",
+      "Daha yaxşısı üçün çalış.",
+      "Günəş hər gün doğur – sən də yenidən başla.",
+      "Xəyallarına sadiq qal.",
+      "Tənbəllik uğurun qatili ola bilər.",
+      "Heç kim sənin yerinə mübarizə aparmaz.",
+      "Yorulmaq normaldır, amma dayanma.",
+      "Səbirli ol, nəticə gələcək.",
+      "Məqsədin üçün yaşa.",
+      "Böyümək üçün dəyiş.",
+      "Zəhmətin qiyməti var.",
+      "Uğura tək yol səbirdən keçir.",
+      "Çətinliklər səni sınayır.",
+      "Hər gecə səhəri gətirər.",
+      "Arzularına inan.",
+      "Ən güclü silah iradədir.",
+      "Güc səni dəyişdirməz, səbir dəyişdirər.",
+      "Yorulsan da, dayanma.",
+      "Geri baxma, irəli get.",
+      "Gələcək bu gün başlayır.",
+      "Xəyalların yoluna işıq salır.",
+      "Zəif anlarında da güc tap.",
+      "Məqsədli yaşa.",
+      "Öz yolunu özün yaz.",
+      "Nəticə üçün hərəkət et.",
+      "Hər gün özünü yenilə.",
+      "İçindəki gücə in.",
+      "Dünən keçdi, bu gün hər şey səndədir."
+    ];
+
+    const startDate = new Date("2024-01-01");
+    const now = new Date();
+    const diffDays = Math.floor((now - startDate) / (1000 * 60 * 60 * 24));
+    const index = diffDays % quotes.length;
+    document.getElementById("quote").textContent = quotes[index];
+  </script>
+</body>
+</html>
