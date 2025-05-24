@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -141,10 +143,26 @@
       "Dünən keçdi, bu gün hər şey səndədir."
     ];
 
-    const index = Math.floor(Math.random() * quotes.length);
-const quote = quotes[index];
+    // LocalStorage ilə istifadəçiyə öz başlanğıc nöqtəsi veririk (yalnız bir dəfə təyin edilir)
+    let userOffset = localStorage.getItem("quote_offset");
+    if (!userOffset) {
+      userOffset = Math.floor(Math.random() * quotes.length);
+      localStorage.setItem("quote_offset", userOffset);
+    } else {
+      userOffset = parseInt(userOffset);
+    }
 
+    // Gün nömrəsini hesablamaq (epoch tarixindən bəri neçə gün keçib)
+    const today = new Date();
+    const start = new Date("2024-01-01");
+    const dayNumber = Math.floor((today - start) / (1000 * 60 * 60 * 24));
 
+    // Həmin gün üçün unikal index tapırıq
+    const index = (userOffset + dayNumber) % quotes.length;
+    const quote = quotes[index];
+
+    // Sözü səhifədə göstər
+    document.getElementById("quote").textContent = quote;
   </script>
 </body>
 </html>
